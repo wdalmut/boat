@@ -4,19 +4,18 @@ The GPS library (mixed C and Go)
 
 ## Build it
 
-In order to obtain `libgps_go.a`
+You need this C library: https://github.com/wdalmut/libgps
 
 ```shell
+$ git clone https://github.com/wdalmut/libgps.git
+$ cd libgps
 $ make
+$ sudo make install # Sym links into /usr/lib and /usr/include
 ```
 
-## More
-
-Its just an example...
+## Run it
 
 ```shell
-$ make
-$ cd golang
 $ go run main/eg.go
 ```
 

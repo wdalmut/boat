@@ -1,9 +1,8 @@
 package gps
 
 import(
-    // #cgo LDFLAGS: -L/home/walter/git/libgps/build -lgps
-    // #cgo CFLAGS: "-I/home/walter/git/libgps/build"
-    // #include "gps.h"
+    // #cgo LDFLAGS: -lgps
+    // #include <gps.h>
     "C"
 )
 

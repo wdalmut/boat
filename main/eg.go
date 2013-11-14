@@ -1,7 +1,7 @@
 package main
 
 import(
-    "github.com/wdalmut/gps/gps"
+    "github.com/wdalmut/boat/gps"
     "fmt"
 )
 

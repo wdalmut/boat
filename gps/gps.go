@@ -8,9 +8,9 @@ import(
 )
 
 const (
-    Earth = 6371
-    DegToRad = 180/math.Pi
-    RadToDeg = math.Pi/180
+    Earth = 6356.7523
+    DegToRad = math.Pi/180
+    RadToDeg = 180/math.Pi
 
 )
 
@@ -26,6 +26,15 @@ func GpsLocation() (float64, float64) {
     return lat, lon
 }
 
+// Spherical Law of Cosines
+func Distance2(lat1, lon1, lat2, lon2 float64) float64 {
+    return math.Acos(
+        math.Sin(lat1 * DegToRad)*math.Sin(lat2 * DegToRad) +
+        math.Cos(lat1 * DegToRad) * math.Cos(lat2 * DegToRad) *
+        math.Cos(lon2 *DegToRad - lon1 * DegToRad)) * Earth;
+}
+
+// Haversine formula
 func Distance(lat1, lon1, lat2, lon2 float64) float64 {
     dLat := (lat2 - lat1) * DegToRad
     dLon := (lon2 - lon1) * DegToRad
@@ -33,9 +42,10 @@ func Distance(lat1, lon1, lat2, lon2 float64) float64 {
     lat1 = lat1 * DegToRad
     lat2 = lat2 * DegToRad
 
-    a := math.Sin(dLat/2) * math.Sin(dLat/2) + math.Sin(dLon/2) * math.Sin(dLon/2) * math.Cos(lat1) * math.Cos(lat2)
+    a1 := math.Sin(dLat/2) * math.Sin(dLat/2)
+    a2 := math.Sin(dLon/2) * math.Sin(dLon/2) * math.Cos(lat1) * math.Cos(lat2)
+    a := a1 + a2
     c := 2 * math.Atan2(math.Sqrt(a), math.Sqrt(1-a));
 
-    d := Earth * c;
-    return d;
+    return Earth * c;
 }

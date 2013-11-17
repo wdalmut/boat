@@ -53,3 +53,40 @@ func TestMidpoint(t *testing.T) {
         t.Errorf("Wrong distance: %v, want %v", lon, wlon)
     }
 }
+
+func BenchmarkMidpoint(b *testing.B) {
+    lat1 := 50.066389
+    lon1 := 5.714722
+
+    lat2 := 58.643889
+    lon2 := 3.07
+
+    for i := 0; i < b.N; i++ {
+        Midpoint(lat1, lon1, lat2, lon2)
+    }
+}
+
+func BenchmarkDistance(b *testing.B) {
+    lat1 := 50.066389
+    lon1 := 5.714722
+
+    lat2 := 58.643889
+    lon2 := 3.07
+
+    for i := 0; i < b.N; i++ {
+        Distance(lat1, lon1, lat2, lon2)
+    }
+}
+
+func BenchmarkDistance2(b *testing.B) {
+    lat1 := 50.066389
+    lon1 := 5.714722
+
+    lat2 := 58.643889
+    lon2 := 3.07
+
+    for i := 0; i < b.N; i++ {
+        Distance2(lat1, lon1, lat2, lon2)
+    }
+}
+

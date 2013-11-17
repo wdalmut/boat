@@ -19,3 +19,25 @@ $ sudo make install # Sym links into /usr/lib and /usr/include
 $ go run main/eg.go
 ```
 
+## Tests & Benchmarks
+
+Run tests only
+
+```shell
+go test
+```
+
+Tests + Benchmarks
+
+```shell
+go test -test.bench .
+```
+
+```
+PASS
+BenchmarkMidpoint        5000000       401 ns/op
+BenchmarkDistance       10000000       202 ns/op
+BenchmarkDistance2      10000000       180 ns/op
+ok      github.com/wdalmut/boat/gps  6.664s
+```
+

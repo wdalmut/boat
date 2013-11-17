@@ -2,5 +2,8 @@ language: go
 go:
     - 1.1
     - tip
-
+before_install: sudo apt-get update && apt-get install build-essential
 install:
+    - git clone https://github.com/wdalmut/libgps
+    - cd libgps && make && sudo make install
+

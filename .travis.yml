@@ -5,5 +5,8 @@ go:
 before_install: sudo apt-get update && sudo apt-get install build-essential
 install:
     - git clone https://github.com/wdalmut/libgps
-    - cd libgps && make && sudo make install
+    - cd libgps
+    - make
+    - sudo make install
+    - cd ..
 

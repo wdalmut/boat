@@ -26,6 +26,23 @@ func GpsLocation() (float64, float64) {
     return lat, lon
 }
 
+func Midpoint(lat1, lon1, lat2, lon2 float64) (float64, float64) {
+    dLon := (lon2 - lon1) * DegToRad
+
+    lat1 = lat1 * DegToRad
+    lat2 = lat2 * DegToRad
+
+    bx := math.Cos(lat2) * math.Cos(dLon)
+    by := math.Cos(lat2) * math.Sin(dLon)
+
+    lat := math.Atan2(math.Sin(lat1) + math.Sin(lat2), math.Sqrt(
+        math.Pow(math.Cos(lat1)+bx, 2) + math.Pow(by, 2))) * RadToDeg
+
+    lon := lon1 + math.Atan2(by, math.Cos(lat1) + bx) * RadToDeg
+
+    return lat, lon
+}
+
 // Spherical Law of Cosines
 func Distance2(lat1, lon1, lat2, lon2 float64) float64 {
     return math.Acos(

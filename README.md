@@ -1,5 +1,7 @@
 # GPS golang library
 
+[![Build Status](https://travis-ci.org/wdalmut/boat.png?branch=develop)](https://travis-ci.org/wdalmut/boat)
+
 The GPS library (mixed C and Go)
 
 ## Build it

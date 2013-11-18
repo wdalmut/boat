@@ -44,3 +44,14 @@ BenchmarkDistance3	10000000	       154 ns/op
 ok  	github.com/wdalmut/boat/gps	8.777s
 ```
 
+## Raspberry Pi Bench
+
+```
+PASS
+BenchmarkMidpoint	  100000	     16270 ns/op
+BenchmarkDistance	  200000	      8039 ns/op
+BenchmarkDistance2	  500000	      6543 ns/op
+BenchmarkDistance3	  500000	      6005 ns/op
+ok  	github.com/wdalmut/boat/gps	9.987s
+```
+

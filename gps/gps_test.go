@@ -33,6 +33,21 @@ func TestDistance2(t *testing.T) {
     }
 }
 
+func TestDistance3(t *testing.T) {
+    lat1 := 50.066389
+    lon1 := 5.714722
+
+    lat2 := 58.643889
+    lon2 := 3.07
+
+    want := 966.8
+
+    if distance := Distance3(lat1, lon1, lat2, lon2); math.Abs(distance - want) > 0.1 {
+        t.Errorf("Wrong distance: %v, want %v", distance, want)
+    }
+
+}
+
 func TestMidpoint(t *testing.T) {
     lat1 := 50.066389
     lon1 := 5.714722
@@ -87,6 +102,18 @@ func BenchmarkDistance2(b *testing.B) {
 
     for i := 0; i < b.N; i++ {
         Distance2(lat1, lon1, lat2, lon2)
+    }
+}
+
+func BenchmarkDistance3(b *testing.B) {
+    lat1 := 50.066389
+    lon1 := 5.714722
+
+    lat2 := 58.643889
+    lon2 := 3.07
+
+    for i := 0; i < b.N; i++ {
+        Distance3(lat1, lon1, lat2, lon2)
     }
 }
 

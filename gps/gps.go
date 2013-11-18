@@ -43,12 +43,23 @@ func Midpoint(lat1, lon1, lat2, lon2 float64) (float64, float64) {
     return lat, lon
 }
 
+// Pythagora's theorem
+func Distance3(lat1, lon1, lat2, lon2 float64) float64 {
+    dlon := (lon2 - lon1) * DegToRad
+    lat := (lat1 + lat2) * DegToRad
+    dlat := (lat2 -lat1) * DegToRad
+
+    x := dlon * math.Cos(lat/2)
+
+    return math.Sqrt(math.Pow(x, 2) + math.Pow(dlat, 2)) * Earth
+}
+
 // Spherical Law of Cosines
 func Distance2(lat1, lon1, lat2, lon2 float64) float64 {
     return math.Acos(
         math.Sin(lat1 * DegToRad)*math.Sin(lat2 * DegToRad) +
         math.Cos(lat1 * DegToRad) * math.Cos(lat2 * DegToRad) *
-        math.Cos(lon2 *DegToRad - lon1 * DegToRad)) * Earth;
+        math.Cos(lon2 *DegToRad - lon1 * DegToRad)) * Earth
 }
 
 // Haversine formula

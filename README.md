@@ -37,9 +37,10 @@ go test -test.bench .
 
 ```
 PASS
-BenchmarkMidpoint        5000000       401 ns/op
-BenchmarkDistance       10000000       202 ns/op
-BenchmarkDistance2      10000000       180 ns/op
-ok      github.com/wdalmut/boat/gps  6.664s
+BenchmarkMidpoint	 5000000	       472 ns/op
+BenchmarkDistance	10000000	       204 ns/op
+BenchmarkDistance2	10000000	       178 ns/op
+BenchmarkDistance3	10000000	       154 ns/op
+ok  	github.com/wdalmut/boat/gps	8.777s
 ```
 

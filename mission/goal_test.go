@@ -10,7 +10,7 @@ var tests = []struct{
     checkpoints []int
 } {
     {[]geo.Point{geo.Point{50.066389, 5.714722}, geo.Point{58.643889, 3.07}}, []int{1023}},
-    {[]geo.Point{geo.Point{50.066389, 5.714722}, geo.Point{50.166389, 5.714723}}, []int{1}},
+    {[]geo.Point{geo.Point{50.066389, 5.714722}, geo.Point{50.166389, 5.714723}}, []int{15}},
 }
 
 

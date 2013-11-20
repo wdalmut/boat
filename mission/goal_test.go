@@ -34,3 +34,22 @@ func TestPrepareMidpoints(t *testing.T) {
     }
 }
 
+func BenchmarkGenerateCheckpoints(b *testing.B) {
+    m := new(Mission)
+
+    point1 := new(geo.Point)
+    point1.Latitude = 50.066389
+    point1.Longitude = 5.714722
+
+    point2 := new(geo.Point)
+    point2.Latitude = 58.643889
+    point2.Longitude = 3.07
+
+    m.AddGoalPoint(point1)
+    m.AddGoalPoint(point2)
+
+    for i:=0; i<b.N; i++ {
+        m.GenerateCheckpoints();
+    }
+}
+

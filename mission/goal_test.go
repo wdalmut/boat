@@ -14,7 +14,34 @@ var tests = []struct{
     {[]geo.Point{geo.Point{43.91, 8.1125}, geo.Point{44.055556, 9.816944}, geo.Point{43.54750, 10.28032}}, []int{255, 127}},
 }
 
+// Test not valid mission (0 points)
+func TestNoPoints(t *testing.T) {
+    defer func() {
+        s := recover()
+        if s == nil {
+            t.Errorf("did not panic...")
+        }
+    }()
 
+    m := new(Mission)
+    m.GenerateCheckpoints()
+}
+
+// Test not valid mission (one point only)
+func TestOnePoint(t *testing.T) {
+    defer func() {
+        s := recover()
+        if s == nil {
+            t.Errorf("did not panic...")
+        }
+    }()
+
+    m := new(Mission)
+    m.AddGoalPoint(new(geo.Point))
+    m.GenerateCheckpoints()
+}
+
+// Test midpoints generation
 func TestPrepareMidpoints(t *testing.T) {
 
     for _, tt := range tests {
@@ -37,6 +64,7 @@ func TestPrepareMidpoints(t *testing.T) {
     }
 }
 
+// Benchmark midpoints generation
 func BenchmarkGenerateCheckpoints(b *testing.B) {
     m := new(Mission)
 
